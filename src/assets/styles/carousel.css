@@ -1,0 +1,29 @@
+.custom-carousel {
+  width: 100%; /* Full width */
+  max-width: 100%; /* Ensure it doesn't exceed full width */
+  margin: auto; /* Center the carousel */
+}
+
+.caption-container {
+  padding: 20px; /* Add padding */
+  border-radius: 10px; /* Rounded corners */
+  position: relative; /* Positioning for better control */
+  top: 1; /* Adjust to move it up */
+  left: 5%; /* Align to the left */
+  width: 40%; /* Set a width for the caption */
+}
+
+.caption-title {
+  font-size: 3.5rem; /* Increase font size for titles */
+  font-weight: 800; /* Set font weight to 600 */
+  color: #fff; /* White text for visibility */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Shadow for better readability */
+  margin-top: -450px;
+}
+
+.caption-text {
+  font-size: 1.2rem; /* Slightly larger font for text */
+  font-weight: 500; /* Slightly bold */
+  color: #fff; /* White text for visibility */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Shadow for better readability */
+}
