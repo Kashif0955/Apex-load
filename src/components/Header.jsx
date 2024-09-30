@@ -1,97 +1,108 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Menu, Dropdown, Button } from "antd";
+import { DownOutlined } from "@ant-design/icons";
 
-function Navigation() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState({});
+export default function Navigation() {
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
-  const toggleDropdown = (index) => {
-    setDropdownOpen((prev) => ({ ...prev, [index]: !prev[index] }));
+  const toggleDropdown = (dropdown) => {
+    setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
   };
 
-  const toggleNav = () => {
-    setIsOpen(!isOpen);
-  };
+  const navItems = [
+    {
+      title: "Transporters",
+      items: [
+        { href: "/post-truck", label: "Post Truck" },
+        { href: "/search-loads", label: "Search for Loads" },
+        { href: "/eac-profile", label: "EAC Profile" },
+      ],
+    },
+    {
+      title: "Hybrid",
+      items: [
+        { href: "/post-truck", label: "Post Truck" },
+        { href: "/post-load", label: "Post a Load" },
+        { href: "/search-loads", label: "Search for Loads" },
+        { href: "/search-trucks", label: "Search for Trucks" },
+      ],
+    },
+    {
+      title: "Brokers/Forwarders",
+      items: [
+        { href: "/post-load", label: "Post a Load" },
+        { href: "/search-trucks", label: "Search for Trucks" },
+      ],
+    },
+    {
+      title: "Products",
+      items: [
+        { href: "/load-board", label: "Load Board" },
+        { href: "/trm", label: "TRM" },
+        { href: "/eac-profile", label: "EAC Profile" },
+        { href: "/invoice-factoring", label: "Invoice Factoring" },
+      ],
+    },
+    {
+      title: "About Us",
+      href: "/about",
+      label: "About Us",
+    },
+    {
+      title: "Resources",
+      items: [{ href: "/partner-marketplace", label: "Partner Market Place" }],
+    },
+  ];
 
-  const handleOutsideClick = (e) => {
-    if (!e.target.closest('.nav-list')) {
-      setDropdownOpen({});
-      setIsOpen(false);
-    }
-  };
+  const renderMenu = (items) => (
+    <Menu>
+      {items.map((item) => (
+        <Menu.Item key={item.href}>
+          <Link to={item.href}>{item.label}</Link>
+        </Menu.Item>
+      ))}
+    </Menu>
+  );
 
   return (
-    <section className="navigation" onClick={handleOutsideClick}>
-      <div className="nav-container">
-        <div className="brand">
-          <img src="src/assets/images/logo.svg" alt="Logo" />
+    <nav className="w-full bg-black text-white">
+      <div className="container mx-auto flex justify-between items-center p-4">
+        <Link to="/">
+          <img
+            src="/pictures/apexloads1.svg"
+            alt="Apex Loads Logo"
+            className="w-[150px] h-auto"
+          />
+        </Link>
+        <div className="flex items-center space-x-4">
+          {navItems.map((item) => (
+            <div key={item.title}>
+              {item.items ? (
+                <Dropdown
+                  overlay={renderMenu(item.items)}
+                  trigger={['click']}
+                  onClick={() => toggleDropdown(item.title)}
+                >
+                  <Button>
+                    {item.title} <DownOutlined />
+                  </Button>
+                </Dropdown>
+              ) : (
+                <Link to={item.href} className="text-white">
+                  {item.label}
+                </Link>
+              )}
+            </div>
+          ))}
+          <Link to="/pricing">
+            <Button className="bg-white text-red-600 rounded-md">Pricing</Button>
+          </Link>
+          <Link to="/contact">
+            <Button className="bg-red-600 text-white rounded-md">Book a Demo</Button>
+          </Link>
         </div>
-        <div className="nav-mobile">
-          <a id="nav-toggle" href="#!" onClick={toggleNav}>
-            <span></span>
-          </a>
-        </div>
-        <nav>
-          <ul className={`nav-list ${isOpen ? 'open' : ''}`}>
-            <li>
-              <a href="#!" onClick={() => toggleDropdown(1)}>
-                Transporters
-              </a>
-              <ul className={`nav-dropdown ${dropdownOpen[1] ? 'open' : ''}`}>
-                <li>
-                  <a href="#!">Post Trucks</a>
-                </li>
-                <li>
-                  <a href="#!">Search for Loads</a>
-                </li>
-                <li>
-                  <a href="#!">EOS Profile</a>
-                </li>
-              </ul>
-            </li>
-
-            <li>
-              <a href="#!" onClick={() => toggleDropdown(2)}>
-                Hybrid
-              </a>
-              <ul className={`nav-dropdown ${dropdownOpen[2] ? 'open' : ''}`}>
-                <li>
-                  <a href="#!">Post Trucks</a>
-                </li>
-                <li>
-                  <a href="#!">Search for Loads</a>
-                </li>
-                <li>
-                  <a href="#!">EOS Profile</a>
-                </li>
-              </ul>
-            </li>
-
-            <li>
-              <a href="#!" onClick={() => toggleDropdown(3)}>
-                Brokers/Forwarders
-              </a>
-              <ul className={`nav-dropdown ${dropdownOpen[3] ? 'open' : ''}`}>
-                <li>
-                  <a href="#!">Post Trucks</a>
-                </li>
-                <li>
-                  <a href="#!">Search for Loads</a>
-                </li>
-                <li>
-                  <a href="#!">EOS Profile</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <div className="nav-buttons">
-          <button className="nav-button1">Pricing</button>
-          <button className="nav-button">Book Demo</button>
-        </div>
-        </nav>
-       
       </div>
-    </section>
+    </nav>
   );
 }
-
-export default Navigation;

@@ -36,8 +36,20 @@ function UncontrolledExample() {
           <p className="caption-text">Savor the flavors of the world with our curated culinary experiences.</p>
         </Carousel.Caption>
       </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="src/assets/images/bluevolvo.png" // Your image path
+          alt="Third slide"
+        />
+        <Carousel.Caption className="caption-container">
+          <h3 className="caption-title">Culinary Journeys</h3>
+          <p className="caption-text">Savor the flavors of the world with our curated culinary experiences.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
     </Carousel>
-  );
+ 
+);
 }
 
 export default UncontrolledExample;

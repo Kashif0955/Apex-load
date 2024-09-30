@@ -1,0 +1,22 @@
+/* Light Theme */
+.light-theme {
+    --background-color: #ffffff;
+    --text-color: #000000;
+  }
+  
+  .light-theme .header-area {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  /* Dark Theme */
+  .dark-theme {
+    --background-color: #333333;
+    --text-color: #ffffff;
+  }
+  
+  .dark-theme .header-area {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  

@@ -1,0 +1,43 @@
+.flex {
+    display: flex;
+  }
+  
+  .flex-col {
+    flex-direction: column;
+  }
+  
+  .justify-center {
+    justify-content: center;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+  
+  .my-10 {
+    margin-top: 2.5rem; /* Adjust as needed */
+    margin-bottom: 2.5rem; /* Adjust as needed */
+  }
+  
+  .w-full {
+    width: 100%;
+  }
+  
+  .object-contain {
+    object-fit: contain;
+  }
+  
+  .text-white {
+    color: white;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .font-extrabold {
+    font-weight: 800;
+  }
+  
+ 
+  

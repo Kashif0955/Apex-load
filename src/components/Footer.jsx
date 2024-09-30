@@ -1,21 +1,9 @@
 import React, { useState } from "react";
-import { Layout, Row, Col, Form, Input, Button, Typography, Space } from "antd";
-import {
-  LinkedinOutlined,
-  InstagramOutlined,
-  FacebookOutlined,
-  TwitterOutlined,
-  PhoneOutlined,
-  MailOutlined,
-  EnvironmentOutlined,
-} from "@ant-design/icons";
+import { FaLinkedin, FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import { MdEmail, MdPhone } from "react-icons/md";
+import { GiPositionMarker } from "react-icons/gi";
 
-const { Footer: AntFooter } = Layout; // Ant Design Footer
-const { Title, Text } = Typography;
-
-// Rename the Footer component to avoid naming conflict
-const CustomFooter = () => {
-  const [form] = Form.useForm();
+export default function FooterSection() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
 
@@ -50,172 +38,192 @@ const CustomFooter = () => {
     },
     {
       title: "Products",
-      items: ["Load board", "TRM", "EAC profile", "Invoice Factoring"],
+      items: ["load board", "TRM", "EAC profile", "Invoice Factoring"],
     },
   ];
 
   const socialItems = [
     {
       name: "LinkedIn",
-      icon: <LinkedinOutlined />,
+      icon: <FaLinkedin />,
       link: "https://www.linkedin.com/company/apexloads/mycompany/",
     },
     {
       name: "Instagram",
-      icon: <InstagramOutlined />,
+      icon: <FaInstagram />,
       link: "https://www.instagram.com/apexloads/",
     },
     {
       name: "Facebook",
-      icon: <FacebookOutlined />,
+      icon: <FaFacebookF />,
       link: "https://web.facebook.com/Apexloads/",
     },
-    {
-      name: "X",
-      icon: <TwitterOutlined />,
-      link: "https://x.com/apexloads",
-    },
+    { name: "Twitter", icon: <FaTwitter />, link: "https://x.com/apexloads" },
   ];
 
-  const handleSubmit = (values) => {
-    const { name, phone } = values;
+  const createSectionLink = (item) => {
+    switch (item.toLowerCase()) {
+      case "about us":
+        return "/about";
+      case "privacy policy":
+        return "/privacy-policy";
+      case "faqs":
+        return "/faqs";
+      case "log in":
+        return "https://app.apexloads.com/";
+      case "pricing":
+        return "/pricing";
+      case "contact us":
+        return "/contact";
+      case "post truck":
+        return "https://app.apexloads.com/truck/new";
+      case "search for loads":
+        return "https://app.apexloads.com/load";
+      case "post a load":
+        return "https://app.apexloads.com/load/new";
+      case "search for trucks":
+        return "https://app.apexloads.com/truck";
+      case "eac profile":
+        return "https://eacprofile.com/";
+      case "trm":
+        return "https://app.apexloads.com/";
+      case "load board":
+        return "https://app.apexloads.com/load/new";
+      case "invoice factoring":
+        return "https://asapfactoring.com/";
+      default:
+        return "/";
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const subject = encodeURIComponent("Support Request from Website");
     const body = encodeURIComponent(`Name: ${name}\nPhone: ${phone}`);
     window.location.href = `mailto:tacjohnrobin@gmail.com?subject=${subject}&body=${body}`;
   };
 
-  const createSectionLink = (item) => {
-    // Add your link mapping logic here
-  };
-
   return (
-    <AntFooter style={{ backgroundColor: '#171715', color: 'white', fontFamily: 'sans-serif', padding: '40px 0' }}>
-      <div className="container mx-auto px-4">
-        <Row gutter={[16, 16]}>
-          {/* Logo and Support Form */}
-          <Col xs={24} md={8} style={{ textAlign: 'left' }}>
-            <img src="src/assets/images/logo.svg" alt="Apex Loads Logo" width={200} /> <br />
-            <Text type="secondary" style={{ color: '#BFBFBF', fontSize: '14px', lineHeight: '1.5',fontWeight:"600" }}>
+    <footer className="bg-[#171715] text-white font-sans">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="space-y-6">
+            <img
+              src="src/assets/images/logo.svg"
+              alt="Apex Loads Logo"
+              width={200}
+              height={28}
+            />
+            <p className="text-[#8F9FA3] text-sm">
               Apexloads is an online load board that connects cargo owners with
               transporters to streamline the freight-truck matching process and
               facilitate faster payments.
-            </Text>
+            </p>
             <div>
-              <Title level={4} style={{ color: 'white', margin: '20px 0 10px' }}>Seeking personalized support?</Title>
-              <Text type="secondary" style={{ color: '#BFBFBF' }}>Request a call from our team</Text>
-              <Form form={form} onFinish={handleSubmit} layout="vertical" style={{ marginTop: '20px' }}>
-                <Form.Item
-                  name="name"
-                  rules={[{ required: true, message: "Please enter your name!" }]}
+              <h3 className="text-xl font-semibold mb-2">
+                Seeking personalized support?
+              </h3>
+              <p className="text-[#8F9FA3] mb-4">
+                Request a call from our team
+              </p>
+              <form className="space-y-4" onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="bg-transparent border border-gray-600 p-2 w-full"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <input
+                  type="tel"
+                  placeholder="Phone Number"
+                  className="bg-transparent border border-gray-600 p-2 w-full"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+                <button
+                  type="submit"
+                  className="w-full bg-[#D91E27] hover:bg-[#B81821] text-white p-2"
                 >
-                  <Input
-                    placeholder="Your Name"
-                    onChange={(e) => setName(e.target.value)}
-                    style={{ color: 'white', backgroundColor: '#333', border: 'none', borderRadius: '4px', padding: '10px' }} 
-                  />
-                </Form.Item>
-                <Form.Item
-                  name="phone"
-                  rules={[{ required: true, message: "Please enter your phone!" }]}
-                >
-                  <Input
-                    placeholder="Phone Number"
-                    onChange={(e) => setPhone(e.target.value)}
-                    style={{ color: 'white', backgroundColor: '#333', border: 'none', borderRadius: '4px', padding: '10px' }} 
-                  />
-                </Form.Item>
-                <Button type="primary" htmlType="submit" block style={{ backgroundColor: '#D91E27', border: 'none' }}>
                   Send a Request
-                </Button>
-              </Form>
+                </button>
+              </form>
             </div>
-          </Col>
+          </div>
 
-          {/* Links Sections */}
-          {sections.map((section, index) => (
-            <Col xs={12} md={4} key={index}>
-              <Title level={5} style={{ color: 'white', marginBottom: '10px' }}>
-                {section.title}
-              </Title>
-              <ul style={{ listStyleType: 'none', padding: 0 }}>
-                {section.items.map((item, i) => (
-                  <li key={i}>
-                    <a
-                      href={createSectionLink(item)}
-                      style={{ color: '#BFBFBF', textDecoration: 'none' }} 
-                      onMouseOver={(e) => (e.currentTarget.style.color = 'white')}
-                      onMouseOut={(e) => (e.currentTarget.style.color = '#BFBFBF')}
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </Col>
-          ))}
-        </Row>
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:col-span-2">
+            {sections.map((section, index) => (
+              <div key={index} className="mb-6 md:mb-0">
+                <h2 className="text-lg font-bold uppercase mb-4">
+                  {section.title}
+                </h2>
+                <ul className="space-y-2">
+                  {section.items.map((item, i) => (
+                    <li key={i}>
+                      <a
+                        href={createSectionLink(item)}
+                        className="text-gray-400 hover:text-white transition-colors no-underline"
+                        >
+                        {item}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
 
-        {/* Contact Information */}
-        <Row gutter={[16, 16]} style={{ marginTop: '40px' }}>
-          <Col xs={24} md={8}>
-            <Space>
-              <PhoneOutlined style={{ fontSize: "20px", color: "#D91E27" }} />
-              <Text style={{ color: 'white' }}>+254 (0) 709 677 400</Text>
-            </Space>
-          </Col>
-          <Col xs={24} md={8}>
-            <Space>
-              <MailOutlined style={{ fontSize: "20px", color: "#D91E27" }} />
-              <Text style={{ color: 'white' }}>info@apexloads.com</Text>
-            </Space>
-          </Col>
-          <Col xs={24} md={8}>
-            <Space>
-              <EnvironmentOutlined style={{ fontSize: "20px", color: "#D91E27" }} />
-              <Text style={{ color: 'white' }}>
-                Gill House, 1st floor, Room 5A, Moi Avenue, Nairobi, Kenya
-              </Text>
-            </Space>
-          </Col>
-        </Row>
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="flex items-center space-x-4">
+            <MdPhone className="h-6 w-6 text-[#D91E27]" />
+            <span className="text-xl font-bold"> +254 (0) 709 677 400</span>
+          </div>
+          <div className="flex items-center space-x-4">
+            <MdEmail className="h-6 w-6 text-[#D91E27]" />
+            <span className="text-xl font-bold">info@apexloads.com</span>
+          </div>
+          <div className="flex items-start space-x-4">
+            <GiPositionMarker className="h-6 w-6 text-[#D91E27] mt-1" />
+            <span className="text-gray-400">
+              Gill House, 1st floor, Room 5A,
+              <br />
+              Moi Avenue, Nairobi, Kenya
+            </span>
+          </div>
+        </div>
 
-        {/* Social Icons */}
-        <Row justify="center" style={{ marginTop: '30px', paddingTop: '20px', borderTop: '1px solid #333' }}>
-          <Space size="large">
+        <div className="mt-9 pt-8 flex:row py-2 border-t border-gray-800 md:flex justify-between">
+          <div className="flex justify-center space-x-4 text-gray-400 text-14 font-neue-plak font-semibold ">
+            © 2024 — Copyright
+          </div>
+          <div className="flex justify-center my-3 md:my-0 font-semibold">
+            <p>
+              <a
+                href="/terms-and-conditions"
+                className="text-gray-500 hover:text-gray-300 hover:underline "
+              >
+                {" Terms and Conditions "}
+              </a>
+              apply
+            </p>
+          </div>
+          <div className="flex justify-center space-x-6">
             {socialItems.map((item, index) => (
               <a
                 key={index}
                 href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: '#BFBFBF', fontSize: '20px' }} // Light gray for social icons
-                onMouseOver={(e) => (e.currentTarget.style.color = 'white')}
-                onMouseOut={(e) => (e.currentTarget.style.color = '#BFBFBF')}
+                className="text-gray-400 hover:text-white transition-colors"
               >
                 {item.icon}
+                <span className="sr-only">{item.name}</span>
               </a>
             ))}
-          </Space>
-        </Row>
-
-        {/* Footer Bottom */}
-        <Row justify="center" style={{ marginTop: '20px', color: '#BFBFBF' }}>
-          <Text style={{ color: 'white' }}>© 2024 — Copyright</Text>
-          <Text style={{ color: 'white' }}>
-            <a
-              href="/terms-and-conditions"
-              style={{ color: '#BFBFBF', textDecoration: 'none', marginLeft: '5px' }}
-              onMouseOver={(e) => (e.currentTarget.style.color = 'white')}
-              onMouseOut={(e) => (e.currentTarget.style.color = '#BFBFBF')}
-            >
-              {" Terms and Conditions "}
-            </a>
-            apply
-          </Text>
-        </Row>
+          </div>
+        </div>
       </div>
-    </AntFooter>
+    </footer>
   );
-};
-
-export default CustomFooter;
+}
