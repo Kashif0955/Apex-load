@@ -6,10 +6,12 @@ import Testimonials from './Testimonials'
 import Video from './Video'
 import Member from './Member'
 import DownloadApp from './DownloadApp'
+// import MiniNav from '../components/MiniNav'
 
 const Home = () => {
   return (
     <>
+    
       <Carousel />
       <About />
       <Services />

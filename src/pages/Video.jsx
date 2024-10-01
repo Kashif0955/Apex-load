@@ -1,7 +1,4 @@
-"use client";
-
 import React, { useEffect, useState } from "react";
-import { Button } from "antd";
 
 const Video = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -61,7 +58,7 @@ const Video = () => {
     <div className="h-[400px] lg:h-[500px] bg-[#D91E27] w-full flex justify-center overflow-visible lg:py-[100px] relative sm:py-[50px]">
       <div className="max-w-[955px] px-4 md:px-7">
         <h1 className="font-neue-plak text-white text-center font-extrabold pt-5 md:pt-0 text-[32px] md:text-[48px] mb-4">
-          AFRICA'S # 1 LOAD BOARD
+          AFRICA'S #1 LOAD BOARD
         </h1>
         <p className="font-neue-plak text-white text-center text-[18px] sm:text-[16px]">
           Empowering Africa's 3PLs with cutting-edge technology and seamless
@@ -69,25 +66,33 @@ const Video = () => {
         </p>
       </div>
 
-      <div className="w-[420px] md:w-[600px] lg:w-[845px] lg:h-[710px] pt-[20px] absolute top-[55%] md:top-[60%] lg:bottom-[-230.5px] left-1/2 transform -translate-x-1/2">
+      <div className="w-[420px] md:w-[600px] lg:w-[845px] pt-[20px] absolute top-[55%] left-1/2 transform -translate-x-1/2">
         <div
           className="relative w-full h-0 pb-[56.25%] bg-black"
           style={{
             backgroundImage: `url('src/assets/images/thumbnail.png')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
           }}
         >
-          <Button
+          <button
             onClick={handlePlayVideo}
             className="absolute inset-0 flex items-center justify-center"
-            type="primary"
-            shape="circle"
-            size="large"
-            icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-12 h-12 text-white">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-6.286 3.623A1 1 0 017 13.917V7.083a1 1 0 011.466-.882l6.286 3.623a1 1 0 010 1.764z" />
-            </svg>}
-          />
+            aria-label="Play video"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="w-12 h-12 text-white bg-red-600 border border-red-600 rounded-[50px] flex justify-center items-center"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M14.752 11.168l-6.286 3.623A1 1 0 017 13.917V7.083a1 1 0 011.466-.882l6.286 3.623a1 1 0 010 1.764z"
+              />
+            </svg>
+          </button>
         </div>
         {isPlaying && (
           <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
@@ -98,18 +103,15 @@ const Video = () => {
                 src="https://www.youtube.com/embed/mifRY9-zlwQ"
                 title="How Apexloads is Solving the Critical Logistics Challenges in East Africa"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
               ></iframe>
-              <Button
+              <button
                 onClick={handleCloseVideo}
-                className="absolute top-4 right-4"
-                type="link"
-                style={{ color: 'white', fontSize: '24px' }}
+                className="absolute top-4 right-4 text-white text-3xl"
                 aria-label="Close video"
               >
                 &times;
-              </Button>
+              </button>
             </div>
           </div>
         )}
@@ -119,28 +121,39 @@ const Video = () => {
             {error ? (
               <p className="text-red-500 text-center">{error}</p>
             ) : (
-              <div className="flex gap-8 justify-center lg:gap-[70px]">
+              <div className="flex col gap-8 justify-center lg:gap-[70px]">
                 <div>
                   <h2 className="font-neue-plak text-center text-[#D91E27] font-extrabold text-[28px] sm:text-[32px] md:text-[40px] lg:text-[48px] xl:text-[72px]">
-                    <Counter target={apiData?.user_signups || 0} duration={2000} /> +
+                    <Counter
+                      target={apiData?.user_signups || 0}
+                      duration={2000}
+                    />
+                    +
                   </h2>
-                  <p className="font-neue-plak text-center text-[#D91E27] text-[12px] sm:text-[14px]">
+                  <p className="font-neue-plak text-center text-[#D91E27] text-[12px] sm:text-[14px] md:text-[14px]">
                     Users Signup
                   </p>
                 </div>
                 <div>
                   <h2 className="font-neue-plak text-center text-[#D91E27] font-extrabold text-[28px] sm:text-[32px] md:text-[40px] lg:text-[48px] xl:text-[72px]">
-                    <Counter target={apiData?.loads_posted_covered || 0} duration={2000} />
+                    <Counter
+                      target={apiData?.loads_posted_covered || 0}
+                      duration={2000}
+                    />
                   </h2>
-                  <p className="font-neue-plak text-center text-[#D91E27] text-[12px] sm:text-[14px]">
+                  <p className="font-neue-plak text-center text-[#D91E27] text-[12px] sm:text-[14px] md:text-[14px]">
                     Loads Posted/Covered
                   </p>
                 </div>
                 <div>
                   <h2 className="font-neue-plak text-center text-[#D91E27] font-extrabold text-[28px] sm:text-[32px] md:text-[40px] lg:text-[48px] xl:text-[72px]">
-                    <Counter target={apiData?.trucks_posted || 0} duration={2000} /> +
+                    <Counter
+                      target={apiData?.trucks_posted || 0}
+                      duration={2000}
+                    />
+                    +
                   </h2>
-                  <p className="font-neue-plak text-center text-[#D91E27] text-[12px] sm:text-[14px]">
+                  <p className="font-neue-plak text-center text-[#D91E27] text-[12px] sm:text-[14px] md:text-[14px]">
                     Trucks Posted
                   </p>
                 </div>
