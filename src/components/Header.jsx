@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { Link } from "react-router-dom"; // Replace with your routing method if different
+import { Link } from "react-router-dom"; 
+import '../assets/styles/button.css';
 
-// Dropdown Link Component
 const DropdownLink = ({ title, items }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropdown = useCallback(() => setIsOpen((prev) => !prev), []);
@@ -11,13 +11,13 @@ const DropdownLink = ({ title, items }) => {
   return (
     <div className="relative group">
       <button
-        className="text-white hover:bg-red-600 hover:underline"
+        className="text-white bg-black-600 hover:underline"
         onClick={toggleDropdown}
       >
         {title}
       </button>
       {isOpen && (
-        <div className="absolute left-0 mt-2 w-48 rounded-md bg-red-600 z-50">
+        <div className="absolute left-0 mt-2 w-48 rounded-md bg-black-600 z-50">
           {items.map((item, index) => (
             <Link
               key={index}
@@ -107,13 +107,13 @@ export default function NavBar() {
   );
 
   return (
-    <nav className="w-full bg-black text-white">
+    <nav className="w-full bg-black text-white sticky top-0 z-50">
       <div className="mx-auto px-4 lg:px-10">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-10">
             <Link to="/">
               <img
-                src="src/assets/images/logo.svg" 
+                src="src/assets/images/logo.svg"
                 alt="Apex Loads Logo"
                 className="w-[210px] h-[66px]"
               />
@@ -123,10 +123,17 @@ export default function NavBar() {
             </div>
           </div>
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/pricing" className="bg-white text-red-600 rounded-[40px] px-4 py-2">
+            <Link
+              to="/pricing"
+              className="btn-black"
+            >
               Pricing
             </Link>
-            <Link to="/contact" className="bg-red-600 text-white rounded-[40px] px-4 py-2">
+
+            <Link
+              to="/contact"
+              className="btn-demo"
+            >
               Book a Demo
             </Link>
           </div>

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { FaLinkedin, FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 import { MdEmail, MdPhone } from "react-icons/md";
@@ -58,7 +60,11 @@ export default function FooterSection() {
       icon: <FaFacebookF />,
       link: "https://web.facebook.com/Apexloads/",
     },
-    { name: "Twitter", icon: <FaTwitter />, link: "https://x.com/apexloads" },
+    {
+      name: "Twitter",
+      icon: <FaTwitter />,
+      link: "https://x.com/apexloads",
+    },
   ];
 
   const createSectionLink = (item) => {
@@ -152,26 +158,27 @@ export default function FooterSection() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:col-span-2">
-            {sections.map((section, index) => (
-              <div key={index} className="mb-6 md:mb-0">
-                <h2 className="text-lg font-bold uppercase mb-4">
-                  {section.title}
-                </h2>
-                <ul className="space-y-2">
-                  {section.items.map((item, i) => (
-                    <li key={i}>
-                      <a
-                        href={createSectionLink(item)}
-                        className="text-gray-400 hover:text-white transition-colors no-underline"
-                        >
-                        {item}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+  {sections.map((section, index) => (
+    <div key={index} className="mb-6 md:mb-0">
+      <h2 className="text-lg font-bold uppercase mb-4 ml-5">
+        {section.title}
+      </h2>
+      <ul className="space-y-2 mb-4"> {/* Add margin here */}
+        {section.items.map((item, i) => (
+          <li key={i}>
+            <a
+              href={createSectionLink(item)}
+              className="text-gray-400 hover:text-white transition-colors no-underline"
+            >
+              {item}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>
+
         </div>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -193,19 +200,19 @@ export default function FooterSection() {
           </div>
         </div>
 
-        <div className="mt-9 pt-8 flex:row py-2 border-t border-gray-800 md:flex justify-between">
-          <div className="flex justify-center space-x-4 text-gray-400 text-14 font-neue-plak font-semibold ">
+        <div className="mt-9 pt-8 flex flex-col md:flex-row py-2 border-t border-gray-800 justify-between">
+          <div className="flex justify-center space-x-4 text-gray-400 text-sm font-semibold">
             © 2024 — Copyright
           </div>
           <div className="flex justify-center my-3 md:my-0 font-semibold">
             <p>
               <a
                 href="/terms-and-conditions"
-                className="text-gray-500 hover:text-gray-300 hover:underline "
+                className="text-gray-500 hover:text-gray-300 hover:underline"
               >
-                {" Terms and Conditions "}
+                Terms and Conditions
               </a>
-              apply
+              {" "}apply
             </p>
           </div>
           <div className="flex justify-center space-x-6">

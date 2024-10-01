@@ -5,23 +5,30 @@ const testimonials = [
   {
     name: "Lora Kisa",
     role: "Broker",
-    image: "/pictures/lorakisa.png",
+    image: "src/assets/images/t2.jpeg",
     testimonial:
       "I save so much time, because I do not have to call the driver to find out where he/she is. I can track them on my mobile. Sometimes I feel like I am James Bond. The app itself has been very valuable to our business and helps to keep us very busy! Thank You!",
   },
   {
     name: "Faith Mukisa",
     role: "Shipper",
-    image: "/pictures/testimonials3.png",
+    image: "src/assets/images/t1.jpeg",
     testimonial:
       "ApexLoads has transformed my business by cutting wait times by 38%, boosting customer satisfaction, and fostering daily network growth. Its unparalleled efficiency solidifies ApexLoads as the top-of-the-line solution driving my success.",
   },
   {
     name: "David Lee",
     role: "Transporter",
-    image: "/pictures/testimonials2.png",
+    image: "src/assets/images/t3.webp",
     testimonial:
       "Managing a large fleet has never been easier. The comprehensive dashboard gives me a bird's-eye view of all operations, helping me make informed decisions quickly. It's like having a co-pilot for our entire logistics operation.",
+  },
+  {
+    name: "John Smith",
+    role: "Broker",
+    image: "src/assets/images/t4.webp",
+    testimonial:
+      "I save so much time, because I do not have to call the driver to find out where he/she is. I can track them on my mobile. Sometimes I feel like I am James Bond. The app itself has been very valuable to our business and helps to keep us very busy! Thank You!",
   },
 ];
 
@@ -53,13 +60,16 @@ export default function Testimonials() {
               className="flex-[0_0_100%] min-w-0 pl-4 md:pl-6 md:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
             >
               <div className="w-full lg:w-[397px] h-auto md:h-[300px] bg-[#1b1b1b] p-5 rounded-xl flex flex-col">
-                <div className="flex items-center gap-2 mb-4">
+                <div className="flex items-center gap-2 mb-4" style={{
+
+                  "border-radius": "50%"
+
+
+                }}>
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
-                    width={87}
-                    height={87}
-                    className="rounded-full"
+                    className="w-[70px] h-[70px] rounded-full object-cover"
                   />
                   <div>
                     <h2 className="font-neue-plak text-white font-bold text-xl md:text-2xl">
@@ -74,6 +84,7 @@ export default function Testimonials() {
                   {testimonial.testimonial}
                 </div>
               </div>
+
             </div>
           ))}
         </div>

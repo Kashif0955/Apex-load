@@ -1,5 +1,5 @@
 import Carousel from 'react-bootstrap/Carousel';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap styles are imported
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function UncontrolledExample() {
@@ -8,7 +8,7 @@ function UncontrolledExample() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="src/assets/images/carousel1.jpg" // Your image path
+          src="src/assets/images/carousel1.jpg"
           alt="First slide"
         />
         <Carousel.Caption className="caption-container">
@@ -20,7 +20,7 @@ function UncontrolledExample() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="src/assets/images/carousel2.png" // Your image path
+          src="src/assets/images/carousel2.png"
           alt="Second slide"
         />
         <Carousel.Caption className="caption-container">
@@ -32,7 +32,7 @@ function UncontrolledExample() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="src/assets/images/loaded.png" // Your image path
+          src="src/assets/images/loaded.png"
           alt="Third slide"
         />
         <Carousel.Caption className="caption-container">
@@ -44,7 +44,7 @@ function UncontrolledExample() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="src/assets/images/bluevolvo.png" // Your image path
+          src="src/assets/images/bluevolvo.png"
           alt="Fourth slide"
         />
         <Carousel.Caption className="caption-container">

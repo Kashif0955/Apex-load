@@ -1,7 +1,7 @@
-/* eslint-disable react/no-unescaped-entities */
+
 import React from "react";
 import { motion } from "framer-motion";
-import { Button } from "antd"; // Import Button from Ant Design
+import { Button } from "antd"; 
 
 
 export default function About() {
@@ -40,7 +40,7 @@ export default function About() {
                 src="src/assets/images/truckx.svg"
                 width={750}
                 height={520}
-                className="transition-all duration-[500ms] ease-in object-contain md:absolute md:top-[5%] md:left-[45%] lg:left-[45%] xl:left-[70%] 2xl:left-[55%] 3xl:left-[45%] transform translate-x-0 opacity-100 md:max-w-[55vw] lg:max-w-[50vw] xl:max-w-[45vw] 2xl:max-w-[40vw]"
+                className="transition-all duration-[500ms] mt-5 ease-in object-contain md:absolute md:top-[5%] md:left-[45%] lg:left-[45%] xl:left-[70%] 2xl:left-[55%] 3xl:left-[45%] transform translate-x-0 opacity-100 md:max-w-[55vw] lg:max-w-[50vw] xl:max-w-[45vw] 2xl:max-w-[40vw]"
               />
             </div>
           </motion.div>
@@ -59,7 +59,7 @@ export default function About() {
               animate="visible"
               variants={fadeInVariants}
             >
-              <span className="text-xl md:text-2xl lg:text-2xl font-neue-plak font-bold lg:text-[28px]">
+              <span className="text-xl md:text-2xl lg:text-2xl font-neue-plak font-bold lg:text-[28px] w-1/2">
                 <span className="text-[#D91E27]">Apexloads</span> is
                 revolutionizing Africa's logistics industry by offering a
                 unified logistics platform designed to optimize operations for
@@ -67,7 +67,7 @@ export default function About() {
               </span>
             </motion.p>
             <motion.p
-              className="mt-4 font-neue-plak text-[16px] md:text-[18px] lg:text-xl xl:text-xl 2xl:text-[25px] text-white w-full transition-all ease-in duration-[500ms] transform translate-x-0 opacity-100 text-2xl md:text-sm  xl:text-2xl xl:w-[721px] 2xl:w-[900px] lg:w-[530px] md:w-[550px] leading-relaxed"
+              className="mt-4 font-neue-plak text-[16px] md:text-[18px] lg:text-xl xl:text-xl 2xl:text-[25px] text-white w-1/2 transition-all ease-in duration-[500ms] transform translate-x-0 opacity-100 text-2xl md:text-sm  xl:text-2xl xl:w-[721px] 2xl:w-[900px] lg:w-[530px] md:w-[550px] leading-relaxed"
               initial="hidden"
               animate="visible"
               variants={fadeInVariants}
@@ -87,7 +87,7 @@ export default function About() {
             >
               <Button
                 type="primary"
-                className="h-[35px] w-[200px] mt-4 px-4 md:px-8 lg:px-10 border-2 border-solid border-white rounded-full transition-all ease-in duration-500 transform translate-x-0 opacity-100 hover:bg-[#D91E37] hover:border-transparent hover:scale-110 hover:tracking-wider hover:duration-150 flex items-center text-[16px] md:text-[14px] lg:text-[18px] font-neue-plak font-semibold"
+                className="btn-black"
               >
                 Learn More
               </Button>

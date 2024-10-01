@@ -1,22 +1,24 @@
+Team Component Styles
+.card {
+  border: none ; /* Remove border */
+  overflow: hidden; /* Prevent overflow of content */
+  position: relative; /* Enable absolute positioning for child elements */
+}
+
+.card img {
+  width: 100%; /* Make the image fit the card width */
+  height: 500px; /* Set a fixed height for consistency */
+  object-fit: cover; /* Cover the card area without distortion */
+  transition: transform 0.3s ease; /* Smooth transform transition */
+}
+
+.card:hover img {
+  transform: scale(1.1); /* Scale up the image on hover */
+}
+
 /* Light Theme */
 .light-theme {
-    --background-color: #ffffff;
-    --text-color: #000000;
-  }
-  
-  .light-theme .header-area {
-    background-color: var(--background-color);
-    color: var(--text-color);
-  }
-  
-  /* Dark Theme */
-  .dark-theme {
-    --background-color: #333333;
-    --text-color: #ffffff;
-  }
-  
-  .dark-theme .header-area {
-    background-color: var(--background-color);
-    color: var(--text-color);
-  }
-  
+  --background-color: #ffffff;
+  --text-color: #000000;
+}
+

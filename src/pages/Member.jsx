@@ -5,7 +5,7 @@ const Member = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Adjust breakpoint as needed
+      setIsMobile(window.innerWidth <= 768);
     };
 
     window.addEventListener("resize", handleResize);
@@ -20,9 +20,8 @@ const Member = () => {
     <div className="flex flex-col justify-center items-center my-10" style={{ backgroundColor: '#000000' }}>
       <div className="w-full ">
         <h1
-          className={`font-neue-plak text-white text-center font-extrabold ${
-            isMobile ? "text-4xl" : "md:text-5xl text-[72px]"
-          }`}
+          className={`font-neue-plak text-white text-center font-extrabold ${isMobile ? "text-4xl" : "md:text-5xl text-[72px]"
+            }`}
         >
           Member of
         </h1>

@@ -39,7 +39,7 @@ export default function DownloadAdd() {
             />
           </a>
         </div>
-        
+
         {/* Hidden images for larger screens */}
         <div className="hidden lg:flex flex-row items-center justify-around w-full">
           <a

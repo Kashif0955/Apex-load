@@ -1,0 +1,33 @@
+.btn-black {
+    padding: 10px 20px;
+    background-color: #eeeaea;
+    color: #111010;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-black:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.btn-demo {
+    padding: 10px 20px;
+    background-color: #cb1919;
+    color: #fff;
+    border: none;
+    border-radius: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-demo:hover {
+    background-color: #ffffffe2;
+    color: #000;
+}
