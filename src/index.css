@@ -3,4 +3,32 @@ body {
     color: #ffffff; /* Text color, agar chahte hain to */
 }
 
-
+/* Mobile Styles */
+@media only screen and (max-width: 600px) {
+    body {
+      font-size: 14px; /* Adjust text size */
+    }
+    nav {
+      display: flex;
+      flex-direction: column; /* Stack navigation items */
+    }
+    img {
+      max-width: 100%; /* Ensure images are responsive */
+      height: auto; /* Maintain aspect ratio */
+    }
+  }
+  
+  /* Tablet Styles */
+  @media only screen and (min-width: 601px) and (max-width: 768px) {
+    body {
+      font-size: 16px; /* Slightly larger text */
+    }
+  }
+  
+  /* Desktop Styles */
+  @media only screen and (min-width: 769px) {
+    body {
+      font-size: 18px; /* Default text size for larger screens */
+    }
+  }
+  
