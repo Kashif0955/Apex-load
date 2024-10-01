@@ -44,7 +44,7 @@ const WhyChooseUs = () => {
             src="src/assets/images/truckman.webp"
             alt="truckman"
             className="w-full max-w-md lg:max-w-lg"
-            style={{ height: "auto", width: "500px" }}
+            style={{ height: "auto" }} // Remove width setting to make it responsive
           />
         </div>
 
@@ -85,9 +85,13 @@ const WhyChooseUs = () => {
         </div>
       </div>
 
-      {/* Media Query Styles */}
+      {/* Custom Media Query Styles */}
       <style jsx>{`
-        @media (max-width: 768px) {
+        @media (max-width: 390px) { /* Target iPhone 14 Pro */
+          img {
+            width: 100% !important; /* Make image full width */
+            height: auto; /* Maintain aspect ratio */
+          }
           .overflow-y-auto {
             height: auto; /* Disable scroll on small screens */
           }

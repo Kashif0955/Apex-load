@@ -119,6 +119,7 @@ export default function FooterSection() {
               alt="Apex Loads Logo"
               width={200}
               height={28}
+              className="h-auto" // Ensure the logo maintains its aspect ratio
             />
             <p className="text-[#8F9FA3] text-sm">
               Apexloads is an online load board that connects cargo owners with
@@ -158,27 +159,26 @@ export default function FooterSection() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:col-span-2">
-  {sections.map((section, index) => (
-    <div key={index} className="mb-6 md:mb-0">
-      <h2 className="text-lg font-bold uppercase mb-4 ml-5">
-        {section.title}
-      </h2>
-      <ul className="space-y-2 mb-4"> {/* Add margin here */}
-        {section.items.map((item, i) => (
-          <li key={i}>
-            <a
-              href={createSectionLink(item)}
-              className="text-gray-400 hover:text-white transition-colors no-underline"
-            >
-              {item}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  ))}
-</div>
-
+            {sections.map((section, index) => (
+              <div key={index} className="mb-6 md:mb-0">
+                <h2 className="text-lg font-bold uppercase mb-4 ml-5">
+                  {section.title}
+                </h2>
+                <ul className="space-y-2 mb-4">
+                  {section.items.map((item, i) => (
+                    <li key={i}>
+                      <a
+                        href={createSectionLink(item)}
+                        className="text-gray-400 hover:text-white transition-colors no-underline"
+                      >
+                        {item}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

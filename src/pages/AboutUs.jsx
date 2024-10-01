@@ -1,8 +1,6 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "antd"; 
-
 
 export default function About() {
   const fadeInVariants = {
@@ -28,6 +26,7 @@ export default function About() {
     >
       <div className="container mx-auto py-4 px-8 md:px-10 3xl:px-24">
         <div className="flex flex-col md:flex-row gap-2 md:gap-10 justify-between md:h-[500px] lg:h-[600px] xl:h-[700px]">
+          {/* Motion Div for Image */}
           <motion.div
             className="w-full md:w-1/2 md:absolute md:right-0 md:top-0 md:bottom-0 md:overflow-visible order-first md:order-last"
             initial={{ opacity: 0, x: 50 }}
@@ -44,6 +43,8 @@ export default function About() {
               />
             </div>
           </motion.div>
+
+          {/* Content Section */}
           <div className="w-full md:w-1/2 z-10 order-last md:order-first">
             <motion.h1
               className="text-white text-3xl z-10 mt-4 md:pt-8 font-neue-plak font-extrabold transition-all duration-500 ease-in transform translate-x-0 opacity-100 xl:text-5xl lg:text-4xl md:text-4xl"
@@ -67,7 +68,7 @@ export default function About() {
               </span>
             </motion.p>
             <motion.p
-              className="mt-4 font-neue-plak text-[16px] md:text-[18px] lg:text-xl xl:text-xl 2xl:text-[25px] text-white w-1/2 transition-all ease-in duration-[500ms] transform translate-x-0 opacity-100 text-2xl md:text-sm  xl:text-2xl xl:w-[721px] 2xl:w-[900px] lg:w-[530px] md:w-[550px] leading-relaxed"
+              className="mt-4 font-neue-plak text-[16px] md:text-[18px] lg:text-xl xl:text-xl 2xl:text-[25px] text-white w-1/2 transition-all ease-in duration-[500ms] transform translate-x-0 opacity-100 text-2xl md:text-sm xl:text-2xl xl:w-[721px] 2xl:w-[900px] lg:w-[530px] md:w-[550px] leading-relaxed"
               initial="hidden"
               animate="visible"
               variants={fadeInVariants}

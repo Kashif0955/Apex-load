@@ -21,9 +21,38 @@
   margin-bottom: 10px; /* Space between title and text */
 }
 
+
 .caption-text {
   font-size: 1.2rem; /* Slightly larger font for text */
   font-weight: 500; /* Slightly bold */
   color: #fff; /* White text for visibility */
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Shadow for better readability */
+}
+
+/* Media Query for iPhone 14 Pro Max */
+@media (max-width: 430px) { /* Adjust for iPhone 14 Pro Max width */
+  .custom-carousel {
+    width: 100%; /* Ensure carousel takes full width */
+  }
+
+  .carousel-item img {
+    height: auto; /* Set height to auto for responsive images */
+  }
+
+  .caption-container {
+    display: none; /* Hide caption container */
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none; /* Hide carousel controls */
+  }
+
+  .caption-title {
+    display: block; /* Show only title */
+    text-align: center; /* Center the title */
+    font-size: 1.5rem; /* Adjust title size */
+    color: white; /* Ensure title is visible */
+    margin-top: -50px; /* Adjust margin to position the title */
+  }
 }
