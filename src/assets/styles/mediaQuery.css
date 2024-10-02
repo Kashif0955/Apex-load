@@ -1,63 +1,157 @@
+nav {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .nav-content .desktop-nav {
+    display: none;
+  }
+
+  .nav-content .mobile-nav {
+    display: flex;
+  }
+
+  .mobile-nav button {
+    font-size: 24px;
+  }
+
+  .mobile-menu-open {
+    display: block;
+    background-color: #333;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+  }
+
+  .mobile-menu-open a {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #444;
+  }
+}
+
+.about-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-wrapper {
+  width: 100%;
+}
+
+.content-wrapper {
+  width: 100%;
+  text-align: left;
+}
+
+@media (max-width: 430px) {
+  .about-container {
+    flex-direction: column-reverse;
+    padding: 0;
+  }
+
+  .about-container .image-wrapper {
+    width: 100%;
+    margin-bottom: 20px; 
+    align-self: center;
+  }
+
+  .about-container .content-wrapper {
+    width: 100%; 
+    text-align: center;
+  }
+
+  .about-container img {
+    width: 100% !important;
+    height: auto;
+    margin: 0 10px;
+    object-fit: cover;
+  }
+
+  .about-container h1,
+  .about-container p {
+    text-align: center; 
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.custom-carousel .caption-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+  z-index: 1;
+}
+
+@media (max-width: 430px) {
+  .custom-carousel img {
+    height: 100vh;
+    object-fit: cover;
+    width: 430px !important;
+  }
+
+  .custom-carousel .carousel-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .custom-carousel .caption-title {
+    display: block;
+    font-size: 24px;
+    text-align: center;
+    color: white;
+    margin: 0;
+  }
+
+  .custom-carousel .caption-text {
+    display: none;
+  }
+}
+
 @media (max-width: 640px) {
-  /* Hide the full menu on small screens */
-  .nav-content {
-    display: none; /* Hide the main navigation items */
+  .height-400 {
+    height: auto;
   }
 
-  .mobile-menu {
-    display: flex; /* Show mobile menu */
-    flex-direction: column; /* Stack items vertically */
-    position: absolute; /* Position absolute for overlay */
-    background-color: #000; /* Match background */
-    width: 100%; /* Full width */
-    left: 0; /* Align to the left */
-    top: 100%; /* Position below navbar */
-    z-index: 10; /* Above other content */
+  h1 {
+    font-size: 24px;
   }
 
-  /* Show only logo and icons */
-  .logo-container {
-    display: flex; /* Flex for logo and icons */
-    align-items: center; /* Center vertically */
-    justify-content: space-between; /* Space between items */
-    width: 100%; /* Full width */
+  p {
+    font-size: 14px;
   }
 
-  .btn-black,
-  .btn-demo {
-    display: none; /* Hide buttons on small screens */
+  .width-420,
+  .width-600,
+  .width-845 {
+    width: 100%;
+    padding-top: 15px;
+  }
+
+  .max-width-955 {
+    max-width: 100%;
+    padding: 0 20px;
   }
 }
-
-/* Show dropdown links in mobile view */
-.mobile-dropdown {
-  display: block; /* Show dropdown in mobile view */
-}
-
-/* Style for dropdown links */
-.mobile-dropdown a {
-  padding: 0.5rem 1rem; /* Padding for links */
-  display: block; /* Block for full width */
-  color: white; /* White text for dropdown links */
-  text-decoration: none; /* Remove underline */
-}
-
-/* about us */
-
-@media (max-width: 430px) { /* Adjust this breakpoint if needed */
-  .flex-col {
-    flex-direction: column; /* Stack elements vertically */
-  }
-  .order-first {
-    order: 1; /* Image comes first */
-  }
-  .order-last {
-    order: 2; /* Content comes second */
-  }
-  img {
-    width: 100%; /* Ensure image takes full width */
-    height: auto; /* Maintain aspect ratio */
-  }
-}
-
-/*  */

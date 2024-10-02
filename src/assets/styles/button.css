@@ -15,10 +15,12 @@
     color: #000;
 }
 
+
 .btn-demo {
     padding: 10px 20px;
     background-color: #cb1919;
     color: #fff;
+    width: 200px;
     border: none;
     border-radius: 40px;
     font-weight: bold;

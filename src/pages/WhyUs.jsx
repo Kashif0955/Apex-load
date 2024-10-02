@@ -87,16 +87,32 @@ const WhyChooseUs = () => {
 
       {/* Custom Media Query Styles */}
       <style jsx>{`
-        @media (max-width: 390px) { /* Target iPhone 14 Pro */
-          img {
-            width: 100% !important; /* Make image full width */
-            height: auto; /* Maintain aspect ratio */
-          }
-          .overflow-y-auto {
-            height: auto; /* Disable scroll on small screens */
-          }
-        }
-      `}</style>
+  @media (max-width: 430px) { /* Target screens 430px wide */
+    .flex {
+      flex-direction: column; /* Stack elements vertically */
+    }
+    .w-full { 
+      width: 100%; /* Ensure full width */
+    }
+    img {
+      width: 100% !important; /* Make image full width */
+      height: auto; /* Maintain aspect ratio */
+    }
+    .text-center {
+      text-align: center; /* Center text */
+    }
+    .lg\\:ml-0 {
+      margin-left: 0; /* Remove margin left */
+    }
+    .overflow-y-auto {
+      height: auto; /* Disable scroll on small screens */
+    }
+    .p-4 {
+      padding: 16px; /* Adjust padding */
+    }
+  }
+`}</style>
+
     </div>
   );
 };

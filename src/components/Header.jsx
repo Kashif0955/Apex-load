@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom"; 
 import { FaBars, FaTruck, FaBoxOpen, FaUsers, FaInfoCircle } from 'react-icons/fa'; // Importing icons
+import { motion } from "framer-motion"; // Import framer-motion for animations
 import '../assets/styles/button.css';
 
 const DropdownLink = ({ title, items }) => {
@@ -18,7 +19,12 @@ const DropdownLink = ({ title, items }) => {
         {title}
       </button>
       {isOpen && (
-        <div className="absolute left-0 mt-2 w-48 rounded-md bg-black-600 z-50">
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          className="absolute left-0 mt-2 w-48 rounded-md bg-black-600 z-50"
+        >
           {items.map((item, index) => (
             <Link
               key={index}
@@ -28,7 +34,7 @@ const DropdownLink = ({ title, items }) => {
               {item.label}
             </Link>
           ))}
-        </div>
+        </motion.div>
       )}
     </div>
   );
@@ -49,7 +55,7 @@ export default function NavBar() {
   const navItems = [
     {
       title: "Transporters",
-      icon: <FaTruck />, // Add an icon for the item
+      icon: <FaTruck />,
       items: [
         { href: "/post-truck", label: "Post truck" },
         { href: "/search-loads", label: "Search for loads" },
@@ -88,13 +94,11 @@ export default function NavBar() {
     },
     {
       title: "About Us",
-      icon: <FaInfoCircle />,
       href: "/about",
       label: "About Us",
     },
     {
       title: "Resources",
-      icon: <FaInfoCircle />,
       items: [{ href: "/partner-marketplace", label: "Partner Market Place" }],
     },
   ];
@@ -102,66 +106,49 @@ export default function NavBar() {
   const NavContent = ({ isMobile }) => (
     <>
       {navItems.map((item) => {
-        return item.href ? (
-          <Link key={item.title} to={item.href} className="text-white relative group flex items-center">
-            {item.icon}
-            <span className="ml-2">{item.title}</span>
-            <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-        ) : (
+        return item.items ? (
           <DropdownLink key={item.title} title={item.title} items={item.items} />
+        ) : (
+          <Link key={item.title} to={item.href} className="text-white hover:underline">
+            {item.label || item.title}
+          </Link>
         );
       })}
     </>
   );
 
   return (
-    <nav className="w-full bg-black text-white sticky top-0 z-50">
-      <div className="mx-auto px-4 lg:px-10">
+    <nav className="w-full bg-black text-white shadow-lg">
+      <div className="mx-auto px-[10px] lg:px-[60px]">
         <div className="flex justify-between items-center py-4">
-          <div className="flex items-center space-x-10">
-            <Link to="/">
-              <img
-                src="src/assets/images/logo.svg"
-                alt="Apex Loads Logo"
-                className="w-[210px] h-[66px]"
-              />
-            </Link>
-            <div className="hidden md:flex space-x-6">
-              <NavContent />
-            </div>
-          </div>
-          <div className="hidden md:flex items-center space-x-4">
-            <Link to="/pricing" className="btn-black">
-              Pricing
-            </Link>
-            <Link to="/contact" className="btn-demo">
-              Book a Demo
-            </Link>
+          <Link to="/">
+            <img src="src/assets/images/logo.svg" alt="Apex Loads Logo" className="w-[150px] h-[30px]" />
+          </Link>
+          <div className="hidden md:flex space-x-6">
+            <NavContent />
+        
+            <Link to="/pricing" className="btn-black">Pricing</Link>
+            <Link to="/book-demo" className="btn-demo">Book a Demo</Link>
           </div>
           <div className="md:hidden">
-            <button 
-              className="text-white" 
-              onClick={() => setIsMenuOpen((prev) => !prev)} // Toggle mobile menu
-            >
-              <FaBars /> {/* Hamburger icon */}
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white">
+              <FaBars size={24} />
             </button>
+            {isMenuOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="absolute left-0 mt-2 w-48 bg-black-600 rounded-md z-50"
+              >
+                <NavContent isMobile />
+                <Link to="/pricing" className="btn-black">Pricing</Link>
+                <Link to="/book-demo" className="btn-demo">Book a Demo</Link>
+              
+              </motion.div>
+            )}
           </div>
         </div>
-        {/* Mobile View */}
-        {isMenuOpen && ( // Render mobile menu if open
-          <div className={`md:hidden bg-black-600`}>
-            <NavContent isMobile />
-            <div className="flex flex-col">
-              <Link to="/pricing" className="text-white py-2 px-4 hover:bg-gray-700">
-                Pricing
-              </Link>
-              <Link to="/contact" className="text-white py-2 px-4 hover:bg-gray-700">
-                Book a Demo
-              </Link>
-            </div>
-          </div>
-        )}
       </div>
     </nav>
   );
